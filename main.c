@@ -39,6 +39,30 @@ void addBookToTail(Book **head, Book *newBook)
     }
 };
 
+void printBooks(Book *head)
+{
+    Book *current = head;
+    while (current != NULL)
+    {
+        printf("\nTitle: %sAuthor: %sYear: %d\n", current->title, current->author, current->year);
+        current = current->next;
+    }
+    printBooks(head);
+};
+
+void freeBooks(Book *head)
+{
+    Book *current = head;
+    while (current != NULL)
+    {
+        Book *next = current->next;
+        free(current->title);
+        free(current->author);
+        free(current);
+        current = next;
+    }
+};
+
 int main(void)
 {
     Book *head = NULL;
