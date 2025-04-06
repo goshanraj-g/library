@@ -23,9 +23,25 @@ Book *createBook(char *title, char *author, int year)
 
 int main(void)
 {
-    
-    Book *head = NULL;
+    char response[10];
+    do
+    {
+        char title[100];
+        char author[100];
+        int year;
+        printf("Enter Title\n");
+        fgets(title, sizeof(title), stdin);
+        printf("Enter author\n");
+        fgets(author, sizeof(author), stdin);
+        printf("Enter the year it was published\n");
+        scanf("%d", &year);
+        while (getchar() != '\n')
+            ;
+        printf("Would you like to add another  book? (y/n): ");
+        fgets(response, sizeof(response), stdin);
+    } while (response[0] == 'y' || response[0] == 'Y');
 
+    Book *head = NULL;
 
     return 0;
 };
